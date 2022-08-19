@@ -46,11 +46,7 @@ class _FirstPageState extends State<FirstPage> {
                   if (city.text == '') {
                     // shows snackbar for user to warn him
                     // that he should enter "city" to continue
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      snackBar(
-                        'Enter some city',
-                      ),
-                    );
+                    snackBar('Enter any city', context);
                   } else {
                     // if "city" is not empty
                     // user will be moved to the next screen

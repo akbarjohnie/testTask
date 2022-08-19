@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:test_task_friflex/city_name.dart';
 import 'package:test_task_friflex/model/weather_model.dart';
 import 'package:test_task_friflex/services/weather_api_client.dart';
-import 'package:test_task_friflex/widget/additional_info.dart';
-import 'package:test_task_friflex/widget/current_weather.dart';
+import 'package:test_task_friflex/widget/additional_info_widget.dart';
+import 'package:test_task_friflex/widget/current_weather_widget.dart';
 
 class SecondPage extends StatefulWidget {
   const SecondPage({Key? key}) : super(key: key);
@@ -13,17 +14,11 @@ class SecondPage extends StatefulWidget {
 
 class _SecondPageState extends State<SecondPage> {
   WeatherApiClient client = WeatherApiClient();
-  Weather? data;
+  WeatherM? data;
 
   Future<void> getData() async {
-    data = await client.getCurrentWeather('Moscow');
+    data = await client.getCurrentWeather(cityName);
   }
-
-  // @override
-  // void initState() {
-  //   client.getCurrentWeather('Moscow');
-  //   super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {

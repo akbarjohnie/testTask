@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_task_friflex/city_name.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({
@@ -10,13 +11,7 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
-  late final TextEditingController city;
-
-  @override
-  void initState() {
-    city = TextEditingController();
-    super.initState();
-  }
+  final TextEditingController city = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,8 +41,15 @@ class _FirstPageState extends State<FirstPage> {
               ),
               MaterialButton(
                 onPressed: () {
-                  Navigator.of(context)
-                      .pushNamedAndRemoveUntil('/second/', (route) => false);
+                  if (city.text == '') {
+                    return;
+                  } else {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/second/',
+                      (route) => false,
+                    );
+                    cityName = city.text;
+                  }
                 },
                 minWidth: 100,
                 color: Colors.blue,

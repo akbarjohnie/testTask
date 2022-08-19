@@ -1,4 +1,4 @@
-class Weather {
+class WeatherM {
   String? cityName;
   double? temperature;
   double? wind;
@@ -6,7 +6,7 @@ class Weather {
   double? feelsLike;
   int? pressure;
 
-  Weather({
+  WeatherM({
     this.cityName,
     this.temperature,
     this.feelsLike,
@@ -15,7 +15,7 @@ class Weather {
     this.pressure,
   });
 
-  Weather.fromJson(Map<String, dynamic> json) {
+  WeatherM.fromJson(Map<String, dynamic> json) {
     cityName = json['name'];
     temperature = json['main']['temp'];
     wind = json['wind']['speed'];

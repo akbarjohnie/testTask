@@ -64,12 +64,12 @@ Widget additionalInfo(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  pressure,
+                  "${pressure}mm",
                   style: addSt,
                 ),
                 const SizedBox(height: 20.0),
                 Text(
-                  humidity,
+                  "$humidity%",
                   style: addSt,
                 ),
               ],

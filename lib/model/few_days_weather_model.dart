@@ -1,4 +1,4 @@
-// generated with "https://javiercbk.github.io/json_to_dart/"
+// model was generated with "https://javiercbk.github.io/json_to_dart/"
 
 class FewDaysModel {
   String? cod;

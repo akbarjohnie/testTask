@@ -87,18 +87,19 @@ class _SecondPageState extends State<SecondPage> {
             return const Center(
               child: CircularProgressIndicator(),
             );
+          } else {
+            return Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Text(
+                    'Something went wrong',
+                  ),
+                  CircularProgressIndicator()
+                ],
+              ),
+            );
           }
-          return Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                Text(
-                  'Something went wrong',
-                ),
-                CircularProgressIndicator()
-              ],
-            ),
-          );
         },
       ),
     );

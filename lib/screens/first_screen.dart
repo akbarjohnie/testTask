@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_task_friflex/city_name.dart';
+import 'package:test_task_friflex/dialogs/snackbar.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({
@@ -41,9 +42,18 @@ class _FirstPageState extends State<FirstPage> {
               ),
               MaterialButton(
                 onPressed: () {
+                  // to avoid navitating with empty "city"
                   if (city.text == '') {
-                    return;
+                    // shows snackbar for user to warn him
+                    // that he should enter "city" to continue
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      snackBar(
+                        'Enter some city',
+                      ),
+                    );
                   } else {
+                    // if "city" is not empty
+                    // user will be moved to the next screen
                     Navigator.of(context).pushNamedAndRemoveUntil(
                       '/second/',
                       (route) => false,
@@ -51,6 +61,7 @@ class _FirstPageState extends State<FirstPage> {
                     cityName = city.text;
                   }
                 },
+                // decoration properties of the button
                 minWidth: 100,
                 color: Colors.blue,
                 shape: RoundedRectangleBorder(

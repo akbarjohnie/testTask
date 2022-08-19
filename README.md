@@ -1,16 +1,10 @@
 # test_task_friflex
 
-A new Flutter project.
+1.) На данный момент корректно работает второй скрин (нынешняя погода), если правильно ввести название города на английском.
 
-## Getting Started
+Если попытаться перейти на второй скрин с пустым тексовым полем, появится снекбар, который укажет на то, что нужно ввести название города (переход на вторую страницу не будет осуществлён), однако введя хоть что-то (например "abs"), переход произойдёт, но будет красный экран с "Null check operation used on a null value", связано с тем, что на втором скрине в "additionalInfo" указан "!".
 
-This project is a starting point for a Flutter application.
+2.) У меня пока что не получается правильно использовать "few_days_weather_api_client.dart" и "few_days_weather_model.dart" (запрос к погодному апи и модель из генератора json --> dart), поэтому на третьем скрине пока что не отображается какая-либо информация полученная из запроса и в данный момент там находятся значения указанные вручную 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3.) В данный момент не реализован никакой State Management 
+    И от части из-за этого передача "city" из первого скрина реализована далеко не лучшим образом.

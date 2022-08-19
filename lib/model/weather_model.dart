@@ -1,3 +1,6 @@
+// simple weather-model for current weather
+//
+
 class WeatherM {
   String? cityName;
   double? temperature;

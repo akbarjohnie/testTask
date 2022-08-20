@@ -13,6 +13,7 @@ class SecondPage extends StatefulWidget {
 }
 
 class _SecondPageState extends State<SecondPage> {
+  // api and model
   WeatherApiClient client = WeatherApiClient();
   WeatherM? data;
 
@@ -24,8 +25,10 @@ class _SecondPageState extends State<SecondPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading:
+            false, // to customize transition to previous screen
         leading: IconButton(
+          // (here is a lot to do with it)
           onPressed: () {
             Navigator.of(context).pushNamedAndRemoveUntil(
               '/first/',
@@ -42,8 +45,11 @@ class _SecondPageState extends State<SecondPage> {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil('/third/', (route) => false);
+              // to avoid unnecessary api call
+              // I used "pushNamed" except of "pushNamedAndRemoveUntil"
+              // with bloc state management it wouldn't be necessary
+              // but for now it's better than nothing
+              Navigator.of(context).pushNamed('/third/');
             },
             icon: const Icon(
               Icons.arrow_forward_ios_rounded,
@@ -55,9 +61,11 @@ class _SecondPageState extends State<SecondPage> {
       body: FutureBuilder(
         future: getData(),
         builder: (context, snapshot) {
+          // different connection states
           if (snapshot.connectionState == ConnectionState.done) {
             return Column(
               children: [
+                // custom widget with city&temperature
                 currentWeather(
                   Icons.cloud_sharp,
                   '${data!.temperature}',
@@ -75,6 +83,7 @@ class _SecondPageState extends State<SecondPage> {
                   padding: EdgeInsets.all(16.0),
                   child: Divider(color: Colors.grey, thickness: 1),
                 ),
+                // custom widget with data from api
                 additionalInfo(
                   data!.temperature.toString(),
                   data!.wind.toString(),

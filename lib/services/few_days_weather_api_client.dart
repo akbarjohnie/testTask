@@ -1,6 +1,9 @@
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:test_task_friflex/model/few_days_weather_model.dart';
+
+// to get data for 3 days forecast
+// with "FewDaysModel"
 
 abstract class FewDaysWeatherApi {
   Future<FewDaysModel> getWeather(String cityName);

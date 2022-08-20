@@ -1,5 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
+// custom widget to show user additional
+// information of current weather such as
+// wind, humidity, pressure, feels_like
+
+const textSt = TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500);
+const addSt = TextStyle(fontSize: 18.0, fontWeight: FontWeight.w400);
+
 Widget additionalInfo(
   String feelsLike,
   String wind,
@@ -80,6 +87,3 @@ Widget additionalInfo(
     ),
   );
 }
-
-const textSt = TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500);
-const addSt = TextStyle(fontSize: 18.0, fontWeight: FontWeight.w400);

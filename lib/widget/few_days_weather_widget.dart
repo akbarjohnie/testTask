@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// custom widget that would show user
+// weather forecast for 3 days
+
 Widget fewDays(
   String lTemp,
   String hTemp,

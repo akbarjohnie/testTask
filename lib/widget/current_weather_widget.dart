@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// 'main' widget that shows temperature and city
+
 Widget currentWeather(IconData icon, String temp, String location) {
   return Center(
     child: Column(

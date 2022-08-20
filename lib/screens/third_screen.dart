@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:test_task_friflex/city_name.dart';
-import 'package:test_task_friflex/main.dart';
 import 'package:test_task_friflex/model/few_days_weather_model.dart';
 import 'package:test_task_friflex/services/few_days_weather_api_client.dart';
 import 'package:test_task_friflex/widget/few_days_weather_widget.dart';
+
+// here is a lot to do, so I wouldn't leave any more comments
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({Key? key}) : super(key: key);
@@ -28,10 +29,7 @@ class _ThirdPageState extends State<ThirdPage> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              '/second/',
-              (route) => false,
-            );
+            Navigator.of(context).pop();
           },
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),

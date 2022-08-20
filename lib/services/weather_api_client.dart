@@ -1,7 +1,9 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:test_task_friflex/model/weather_model.dart';
+
+// to get data for current weather forecast
+// with "WeatherM"
 
 class WeatherApiClient {
   Future<WeatherM>? getCurrentWeather(String? city) async {

@@ -62,7 +62,10 @@ class _SecondPageState extends State<SecondPage> {
         future: getData(),
         builder: (context, snapshot) {
           // different connection states
-          if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.connectionState == ConnectionState.done
+              // &&
+              //     data?.temperature.toString() != null
+              ) {
             return Column(
               children: [
                 // custom widget with city&temperature
@@ -97,14 +100,20 @@ class _SecondPageState extends State<SecondPage> {
               child: CircularProgressIndicator(),
             );
           } else {
+            // if data is null, or user had made a mistake in city name,
+            // or there was any other issue, this screen will appear
             return Center(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Text(
-                    'Something went wrong',
+                    'Something went wrong... \n \nPlease try again',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
                   ),
-                  CircularProgressIndicator()
+                  SizedBox(width: 10),
                 ],
               ),
             );

@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 // weather forecast for 3 days
 
 Widget fewDays(
-  String lTemp,
-  String hTemp,
-  String humidity,
-  String wind,
-  String location,
+  String? lTemp,
+  String? hTemp,
+  String? humidity,
+  String? wind,
+  String? location,
 ) {
   return Container(
     height: 150,
@@ -43,7 +43,7 @@ Widget fewDays(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Icon(Icons.thermostat_rounded),
-                  Text(lTemp),
+                  Text("$lTemp "),
                 ],
               ),
               Column(
@@ -51,7 +51,7 @@ Widget fewDays(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Icon(Icons.water_drop_rounded),
-                  Text(humidity),
+                  Text("$humidity "),
                 ],
               ),
               Column(
@@ -59,7 +59,7 @@ Widget fewDays(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Icon(Icons.wind_power_outlined),
-                  Text(wind),
+                  Text("$wind "),
                 ],
               )
             ],

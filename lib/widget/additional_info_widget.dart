@@ -8,10 +8,10 @@ const textSt = TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500);
 const addSt = TextStyle(fontSize: 18.0, fontWeight: FontWeight.w400);
 
 Widget additionalInfo(
-  String feelsLike,
-  String wind,
-  String humidity,
-  String pressure,
+  String? feelsLike,
+  String? wind,
+  String? humidity,
+  String? pressure,
 ) {
   return Container(
     width: double.infinity,

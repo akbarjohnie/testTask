@@ -30,10 +30,8 @@ class _SecondPageState extends State<SecondPage> {
         leading: IconButton(
           // (here is a lot to do with it)
           onPressed: () {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              '/first/',
-              (route) => false,
-            );
+            // removing screen
+            Navigator.of(context).pop();
           },
           icon: const Icon(
             Icons.arrow_back_ios_rounded,
@@ -62,10 +60,8 @@ class _SecondPageState extends State<SecondPage> {
         future: getData(),
         builder: (context, snapshot) {
           // different connection states
-          if (snapshot.connectionState == ConnectionState.done
-              // &&
-              //     data?.temperature.toString() != null
-              ) {
+          if (snapshot.connectionState == ConnectionState.done &&
+              data?.temperature.toString() != null) {
             return Column(
               children: [
                 // custom widget with city&temperature

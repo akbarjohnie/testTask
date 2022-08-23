@@ -1,5 +1,12 @@
 // model was generated with "https://javiercbk.github.io/json_to_dart/"
 
+// I've tried to get data without any changes in model
+// but it wasn't working, then I tried to google,
+// but there I've not found anything helpful.
+// After using ".toDouble" on some fields,
+// it works fine, but with some cities
+// model can't receive any data, so it's null.
+
 class FewDaysModel {
   String? cod;
   int? message;
@@ -7,7 +14,13 @@ class FewDaysModel {
   List<ListModel>? list;
   City? city;
 
-  FewDaysModel({this.cod, this.message, this.cnt, this.list, this.city});
+  FewDaysModel({
+    this.cod,
+    this.message,
+    this.cnt,
+    this.list,
+    this.city,
+  });
 
   FewDaysModel.fromJson(Map<String, dynamic> json) {
     cod = json['cod'];
@@ -73,7 +86,7 @@ class ListModel {
     clouds = json['clouds'] != null ? Clouds.fromJson(json['clouds']) : null;
     wind = json['wind'] != null ? Wind.fromJson(json['wind']) : null;
     visibility = json['visibility'];
-    pop = json['pop'];
+    pop = json['pop'].toDouble();
     sys = json['sys'] != null ? Sys.fromJson(json['sys']) : null;
     dtTxt = json['dt_txt'];
     rain = json['rain'] != null ? Rain.fromJson(json['rain']) : null;
@@ -130,15 +143,15 @@ class Main {
       this.tempKf});
 
   Main.fromJson(Map<String, dynamic> json) {
-    temp = json['temp'];
-    feelsLike = json['feels_like'];
-    tempMin = json['temp_min'];
-    tempMax = json['temp_max'];
+    temp = json['temp'].toDouble();
+    feelsLike = json['feels_like'].toDouble();
+    tempMin = json['temp_min'].toDouble();
+    tempMax = json['temp_max'].toDouble();
     pressure = json['pressure'];
     seaLevel = json['sea_level'];
     grndLevel = json['grnd_level'];
     humidity = json['humidity'];
-    tempKf = json['temp_kf'];
+    tempKf = json['temp_kf'].toDouble();
   }
 
   Map<String, dynamic> toJson() {
@@ -205,9 +218,9 @@ class Wind {
   Wind({this.speed, this.deg, this.gust});
 
   Wind.fromJson(Map<String, dynamic> json) {
-    speed = json['speed'];
+    speed = json['speed'].toDouble();
     deg = json['deg'];
-    gust = json['gust'];
+    gust = json['gust'].toDouble();
   }
 
   Map<String, dynamic> toJson() {
@@ -241,7 +254,7 @@ class Rain {
   Rain({this.d3h});
 
   Rain.fromJson(Map<String, dynamic> json) {
-    d3h = json['3h'];
+    d3h = json['3h'].toDouble();
   }
 
   Map<String, dynamic> toJson() {

@@ -4,7 +4,7 @@ import 'package:test_task_friflex/model/few_days_weather_model.dart';
 import 'package:test_task_friflex/services/few_days_weather_api_client.dart';
 import 'package:test_task_friflex/widget/few_days_weather_widget.dart';
 
-// here is a lot to do, so I wouldn't leave any more comments
+// 3 days forecast screen
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({Key? key}) : super(key: key);
@@ -14,11 +14,10 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
+  // initializing model and api
   FewDaysWeatherApiClient fewDaysClient = FewDaysWeatherApiClient();
   FewDaysModel data = FewDaysModel();
-  // ListModel mainData = ListModel();
-  List<ListModel>? mainData;
-
+  //getting data
   Future<void> fewDaysData() async {
     data = await fewDaysClient.getWeather(cityName);
   }
@@ -29,17 +28,23 @@ class _ThirdPageState extends State<ThirdPage> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
+            // maybe it's better to use "pushNamedAndRemoveUntil",
+            // because if user will decide to return to the third screen
+            // he will make another api-call, but it's unnecessary
             Navigator.of(context).pop();
           },
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
         ),
-        title: const Text('Few days weather'),
+        title: const Text('Few days weather forecast'),
         centerTitle: true,
       ),
       body: FutureBuilder(
         future: fewDaysData(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
+          if (snapshot.connectionState == ConnectionState.done &&
+              data.list?.elementAt(0).main?.tempMin != null) {
+            // if data != null and connection is done
+            // there will appeare this containers
             return Container(
               alignment: const Alignment(0, 0),
               child: Column(
@@ -55,11 +60,31 @@ class _ThirdPageState extends State<ThirdPage> {
                     ),
                   ),
                   const SizedBox(height: 50),
-                  fewDays('', '20', '60', '3', cityName),
+                  // custom widget, that shows weather information
+                  // (not really good way to show data, I'll fix it)
+                  fewDays(
+                      data.list!.elementAt(4).main!.tempMax.toString(),
+                      data.list!.elementAt(7).main!.tempMin.toString(),
+                      data.list!.elementAt(7).main!.humidity.toString(),
+                      data.list!.elementAt(7).wind!.speed.toString(),
+                      data.city!.name,
+                      data.list!.elementAt(7).dtTxt),
                   const SizedBox(height: 10),
-                  fewDays('6', '20', '60', '3', cityName),
+                  fewDays(
+                      data.list!.elementAt(12).main!.tempMax.toString(),
+                      data.list!.elementAt(15).main!.tempMin.toString(),
+                      data.list!.elementAt(15).main!.humidity.toString(),
+                      data.list!.elementAt(15).wind!.speed.toString(),
+                      data.city!.name,
+                      data.list!.elementAt(15).dtTxt),
                   const SizedBox(height: 10),
-                  fewDays('6', '20', '60', '3', cityName),
+                  fewDays(
+                      data.list!.elementAt(20).main!.tempMax.toString(),
+                      data.list!.elementAt(23).main!.tempMin.toString(),
+                      data.list!.elementAt(23).main!.humidity.toString(),
+                      data.list!.elementAt(23).wind!.speed.toString(),
+                      data.city!.name,
+                      data.list!.elementAt(23).dtTxt),
                 ],
               ),
             );

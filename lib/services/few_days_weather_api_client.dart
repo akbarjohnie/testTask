@@ -10,6 +10,11 @@ class FewDaysWeatherApiClient {
     final uri = Uri.parse(
       'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&appid=49c515204f9a8c06ebd98db6767145ac&units=metric&cnt=24',
     );
+    // &units=metric -- to get data in metric system
+    // &cnt=24 -- to get data for 72 hours == 3 days
+    // q=$cityName -- to get data of the entered city
+    // &appid=... -- apiKey
+    // may be it's better to use "https" except of "parse"
 
     final response = await http.get(uri);
 

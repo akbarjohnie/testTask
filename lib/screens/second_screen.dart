@@ -28,14 +28,13 @@ class _SecondPageState extends State<SecondPage> {
         automaticallyImplyLeading:
             false, // to customize transition to previous screen
         leading: IconButton(
-          // (here is a lot to do with it)
           onPressed: () {
-            // removing screen
-            Navigator.of(context).pop();
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              '/first/',
+              (route) => false,
+            );
           },
-          icon: const Icon(
-            Icons.arrow_back_ios_rounded,
-          ),
+          icon: const Icon(Icons.arrow_back_ios_rounded),
           splashRadius: 25,
         ),
         title: const Text('Current Weather'),
@@ -43,8 +42,8 @@ class _SecondPageState extends State<SecondPage> {
         actions: [
           IconButton(
             onPressed: () {
-              // to avoid unnecessary api call
-              // I used "pushNamed" except of "pushNamedAndRemoveUntil"
+              // to avoid unnecessary api call    ????
+              // I used "pushNamed" except of "pushNamedAndRemoveUntil"   ????
               // with bloc state management it wouldn't be necessary
               // but for now it's better than nothing
               Navigator.of(context).pushNamed('/third/');

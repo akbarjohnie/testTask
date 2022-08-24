@@ -18,6 +18,7 @@ class _FirstPageState extends State<FirstPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Weather app'),
         centerTitle: true,
       ),
@@ -50,10 +51,7 @@ class _FirstPageState extends State<FirstPage> {
                   } else {
                     // if "city" is not empty
                     // user will be moved to the next screen
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/second/',
-                      (route) => false,
-                    );
+                    Navigator.of(context).pushNamed('/second/');
                     cityName = city.text;
                   }
                 },

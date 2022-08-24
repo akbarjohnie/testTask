@@ -21,6 +21,7 @@ class _ThirdPageState extends State<ThirdPage> {
   Future<void> fewDaysData() async {
     data = await fewDaysClient.getWeather(cityName);
   }
+  // every transition to second/third screen cause api-call   ???
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +29,10 @@ class _ThirdPageState extends State<ThirdPage> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-            // maybe it's better to use "pushNamedAndRemoveUntil",
-            // because if user will decide to return to the third screen
-            // he will make another api-call, but it's unnecessary
-            Navigator.of(context).pop();
+            Navigator.of(context).pushNamed('/second/');
           },
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          splashRadius: 25,
         ),
         title: const Text('Few days weather forecast'),
         centerTitle: true,
